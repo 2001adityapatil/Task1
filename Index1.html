@@ -1,0 +1,360 @@
+
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      .warning-bar-content{
+        display:none !important;
+      }
+      h1{
+        
+        color: #202020;
+        font-size: 50px;
+        font-weight: thickbold;
+        font-family: Arial;
+      }
+        button
+        {
+    height: 30px;
+    width: 150px;
+    font-size: 20px;
+
+  }
+  body {
+    background-color: #FFFAFA;
+  }
+      label {
+    height: 30px;
+    width: 150px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  select {
+    margin: 25px;
+    height: 50px;
+    width: 750px;
+    font-size: 20px;
+  }
+
+</style>
+<style>
+  .container {
+        display: flex;
+  /* Align the items vertically to the middle of the parent element */
+  align-items: center;
+  /* Set the height of the parent element */
+ /* Center the items horizontally within the parent element */
+  justify-content: center;
+    height: 150px;
+  /* Set the background image */
+  background-image: url('  https://s4.aconvert.com/convert/p3r68-cdx67/ampzx-mq2rp.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  }
+  .box {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    background-color: #CEEBEF;
+
+  }
+  .dropdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .label-container {
+    display: flex;
+    align-items: center;
+  }
+        input[type="text"], select {
+        height: 30px;
+        width: 400px;
+        font-size: 20px;
+        margin: 25px;
+      }
+</style>
+
+<div class="container">
+    <h1>Daily Progress Report</h1>
+  </div>
+<div class = "box">
+<div class="dropdown-container">
+  <div class="dropdown-container">
+  <div class="label-container">
+    <label for = "datepicker">DATE:</label>
+    <input type="date" id="datepicker">
+    </div>
+  <div class="label-container">
+    <label for="EmpCode">Enter Employee Code:</label>
+    <input type = "Text" select id="EmpCode"></select>
+  </div>
+  <div class="label-container">
+    <label for="myDropdown1">Project Name:</label>
+    <select id="myDropdown1"></select>
+  </div>
+  <div class="label-container">
+     <label for="checkbox2">Name of Agency</label>
+    <input type = "checkbox" select id="checkbox2" class="mcheckbox2" value="Vision systems"><label>Vision sys</label></select>
+    <input type = "checkbox" select id="checkbox2" class="mcheckbox2" value="VEPL"><label>VEPL</label></select>
+    <input type = "checkbox" select id="checkbox2" class="mcheckbox2" value="OEM"><label>OEM</label></select>
+    <!-- <label for="myDropdown2">Name of Agency</label>
+    <select id="myDropdown2"></select> -->
+  </div>
+  <div class="label-container">
+    <label for="myDropdown3">Name of Executive</label>
+    <select id="myDropdown3"></select>
+  </div>
+    <div class="label-container">
+    <label for="reporttime">Reporting Time at Site</label>
+    <input type = "Text" select id="reporttime"></select>
+  </div>
+    <div class="label-container">
+    <label for="exittime">Exit Time at Site</label>
+    <input type = "Text" select id="exittime"></select>
+  </div>
+    <div class="label-container">
+    <label for="checkbox1">Job Constraint</label>
+    <input type = "checkbox" select id="checkbox1" class="mcheckbox1" name="job" value="Job Constraint 1"><label>Job Constraint 1</label></select>
+    <input type = "checkbox" select id="checkbox1" class="mcheckbox1" name="job" value="Job Constraint 2"><label>Job Constraint 2</label></select>
+  </div>
+      <div class="label-container">
+    <label for="safety">Safety & Quality Issue</label>
+    <input type = "Text" select id="safety"></select>
+  </div>
+    <div class="label-container">
+   
+    <!-- <input type = "checkbox" select id="checkbox2"></select> -->
+    <label for="myDropdown2">Activity</label>
+    <select id="myDropdown2"></select>
+  </div>
+        <div class="label-container">
+    <label for="myDropdown4">Name of Associates</label>
+    <select id="myDropdown4"></select>
+  </div>
+          <div class="label-container">
+    <label for="avg">Average Reporting Time</label>
+    <input type = "Text" select id="avg"></select>
+  </div>
+          <div class="label-container">
+    <label for="req">Required/Available Manpower</label>
+    <input type = "Text" select id="req"></select>
+  </div>
+          <div class="label-container">
+    <label for="pln">Planned Work</label>
+    <input type = "Text" select id="pln"></select>
+  </div>
+            <div class="label-container">
+    <label for="act">Actual Work</label>
+    <input type = "Text" select id="act"></select>
+  </div>
+              <div class="label-container">
+    <label for="tom">Tomorrow's Work</label>
+    <input type = "Text" select id="tom"></select>
+  </div>
+              <div class="label-container">
+    <label for="rem">Remarks</label>
+    <input type = "Text" select id="rem"></select>
+  </div>
+<br>
+  <div class="label-container">
+  <button id="saveButton">Save</button>
+  </div>
+   <br>
+
+  </div>
+  <form id="myForm" align="center">
+            <div id="data"></div>
+            <!-- <input type="text" id="myName" name="myName" placeholder="Your name...">
+            <input type="email" id="myEmail" name="myEmail" placeholder="Your email..."> -->
+            <input id="uploadfile" type="file" name="myFile">
+            <input type="submit" value="Upload File" 
+           onclick="this.value='Uploading..';
+           getFiles();
+            return false;">
+          </form>
+          <div id="output"></div>
+ 
+  <body>
+    <script>
+  // Call the getValuesFromSheet function and pass the returned object to the createDropdowns function
+  google.script.run
+    .withSuccessHandler(createDropdowns)
+    .getValuesFromSheet();
+
+      document.getElementById("saveButton").addEventListener("click", saveValues);
+
+// document.getElementById("upload").addEventListener("click", createFile);
+
+  function saveValues() {
+  // Get the selected values from the dropdown lists
+  var date = document.getElementById("datepicker").value;
+  var value1 = document.getElementById("EmpCode").value;
+  var value2 = document.getElementById("myDropdown1").value;
+  var value3 = document.getElementById("myDropdown2").value;
+  var value4 = document.getElementById("myDropdown3").value;
+  var value5 = document.getElementById("reporttime").value;
+  var value6 = document.getElementById("exittime").value;
+  // var value7 = document.getElementById("checkbox1").value;
+  var value7 = document.querySelector('.mcheckbox2:checked').value;
+  var value8 = document.getElementById("safety").value;
+  // var value9 = document.getElementById("checkbox2").value;
+  var value9 = document.querySelector('.mcheckbox1:checked').value;
+  var value10 = document.getElementById("myDropdown4").value;
+  var value11 = document.getElementById("avg").value;
+  var value12 = document.getElementById("req").value;
+  var value13 = document.getElementById("pln").value;
+  var value14 = document.getElementById("act").value;
+  var value15 = document.getElementById("tom").value;
+  var value16 = document.getElementById("rem").value;
+if (date == "" || value2 == "" || value3 == "" || value4 == "" ||
+value7 == "" || value9 == "" || value10 == "") 
+{
+  var dialog = document.createElement("dialog");
+
+  var content = document.createElement("div");
+  content.innerHTML = "Please select values in all dropdowns";
+
+   var button = document.createElement("button");
+  button.innerHTML = "OK";
+  button.addEventListener("click", function() {
+    // Remove the dialog when the OK button is clicked
+    document.body.removeChild(dialog);
+  });
+
+  // Add the content to the dialog
+  dialog.appendChild(content);
+
+  // Add the OK button to the dialog
+  dialog.appendChild(button);
+
+  // Add the dialog to the page
+  document.body.appendChild(dialog);
+
+  // Show the dialog
+  dialog.showModal();
+}
+else
+{
+  // Send a request to the server to save the values
+  google.script.run.saveValuesToSheet(date, value2, value3, value4, value7, value9, value10);
+  // 
+   // Create the dialog element
+  var dialog = document.createElement("dialog");
+
+  // Create the dialog content
+  var content = document.createElement("div");
+  content.innerHTML = "Values saved!";
+
+   var button = document.createElement("button");
+  button.innerHTML = "OK";
+  button.addEventListener("click", function() {
+    // Remove the dialog when the OK button is clicked
+    document.body.removeChild(dialog);
+  });
+
+  // Add the content to the dialog
+  dialog.appendChild(content);
+
+  // Add the OK button to the dialog
+  dialog.appendChild(button);
+
+  // Add the dialog to the page
+  document.body.appendChild(dialog);
+
+  // Show the dialog
+  dialog.showModal();
+  // Empty the dropdown lists
+  document.getElementById("myDropdown1").value = "";
+  document.getElementById("myDropdown2").value = "";
+  document.getElementById("myDropdown3").value = "";
+  document.querySelector('.mcheckbox2:checked').value = "";
+  document.querySelector('.mcheckbox1:checked').value = "";
+  document.getElementById("myDropdown4").value = "";
+}
+}  
+  
+
+  // Function to create the dropdowns
+  function createDropdowns(values) {
+    // Get the element where you want to display the first dropdown
+    var dropdown1Element = document.getElementById("myDropdown1");
+      var option = document.createElement("option");
+    option.value = "";
+    option.text = "";
+    dropdown1Element.add(option);
+    // Iterate over the values1 array and create an option element for each value
+    values.values1.forEach(function(value) {
+      var option = document.createElement("option");
+      option.value = value[0];
+      option.text = value[0];
+      dropdown1Element.add(option);
+    });
+
+
+// Get the element where you want to display the second dropdown
+    var dropdown2Element = document.getElementById("myDropdown2");
+    var option = document.createElement("option");
+    option.value = "";
+    option.text = "";
+    dropdown2Element.add(option);
+    // Iterate over the values2 array and create an option element for each value
+    values.values5.forEach(function(value) {
+      var option = document.createElement("option");
+      option.value = value[0];
+      option.text = value[0];
+      dropdown2Element.add(option);
+          });
+
+// Get the element where you want to display the third dropdown
+    var dropdown3Element = document.getElementById("myDropdown3");
+    var option = document.createElement("option");
+    option.value = "";
+    option.text = "";
+    dropdown3Element.add(option);
+    // Iterate over the values2 array and create an option element for each value
+    values.values3.forEach(function(value) {
+      var option = document.createElement("option");
+      option.value = value[0];
+      option.text = value[0];
+      dropdown3Element.add(option);
+    });
+
+    var dropdown4Element = document.getElementById("myDropdown4");
+    var option = document.createElement("option");
+    option.value = "";
+    option.text = "";
+    dropdown4Element.add(option);
+    // Iterate over the values2 array and create an option element for each value
+    values.values6.forEach(function(value) {
+      var option = document.createElement("option");
+      option.value = value[0];
+      option.text = value[0];
+      dropdown4Element.add(option);
+    });
+  }
+
+   function getFiles() {
+    //  const name = document.getElementById('myName').value;
+    //  const email = document.getElementById('myEmail').value;
+     const f = document.getElementById('uploadfile');
+     [...f.files].forEach((file, i) => {
+      const fr = new FileReader();
+      fr.onload = (e) => {
+       const data = e.target.result.split(",");
+       const obj = {fileName: f.files[i].name, mimeType: data[0].match(/:(\w.+);/)[1], data: data[1]};
+       google.script.run.withSuccessHandler(fileUploaded)
+       .uploadFiles(obj);
+      }
+     fr.readAsDataURL(file);
+    });
+    }
+
+     function fileUploaded(status) {
+        document.getElementById('myForm').style.display = 'none';
+        document.getElementById('output').innerHTML = status;
+    }
+
+</script>
+  </body>
+</html>
